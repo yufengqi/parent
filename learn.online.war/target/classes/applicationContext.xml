@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+ 	<!--bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation"
+			value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean-->
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver">
+		</property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="username" value="learn"></property>
+		<property name="password" value="wh"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.Oracle9Dialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>learn/online/common/vo/Registertable.hbm.xml</value>
+				<value>learn/online/common/vo/Manage.hbm.xml</value>
+				<value>learn/online/common/vo/Teacherinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Classinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Cwrration.hbm.xml</value>
+				<value>learn/online/common/vo/Foruminfo.hbm.xml</value>
+				<value>learn/online/common/vo/Forumpost.hbm.xml</value>
+				<value>learn/online/common/vo/Forumrelation.hbm.xml</value>
+				<value>learn/online/common/vo/Forumreview.hbm.xml</value>
+				<value>learn/online/common/vo/Learninfo.hbm.xml</value>
+				<value>learn/online/common/vo/Leavewordinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Publicnotice.hbm.xml</value>
+				<value>learn/online/common/vo/Replyinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Upinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Workinfo.hbm.xml</value>
+				<value>learn/online/common/vo/Student.hbm.xml</value>
+				<value>learn/online/common/vo/Teacher.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="hibTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="dao" class="learn.online.impl.dao.impl.ControlImpyh">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daot" class="learn.online.impl.dao.impl.ControlTimp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoc" class="learn.online.impl.dao.impl.ControlClassImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daor" class="learn.online.impl.dao.impl.ControlralationImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoleaveword" class="learn.online.impl.dao.impl.ControlleavewordImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daowork" class="learn.online.impl.dao.impl.ControlworkImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daopublic" class="learn.online.impl.dao.impl.ControlpublcnoticeImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoreply" class="learn.online.impl.dao.impl.ControlreplyinfoImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoupdown" class="learn.online.impl.dao.impl.ControlUpinfoImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoforum" class="learn.online.impl.dao.impl.ControlForumImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoforumall" class="learn.online.impl.dao.impl.ControlforumpostImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	<bean id="daoview" class="learn.online.impl.dao.impl.ControlViewImp">
+		<property name="hibTemplate">
+			<ref bean="hibTemplate"/>
+		</property>
+	</bean>
+	
+	 <bean id = "RegisterLoginServiceimp" class = "learn.online.impl.servicemapper.impl.RegisterLoginServiceimp" scope ="prototype">
+     <property name="cyh">
+          <ref bean = "dao"/>
+      </property>
+    </bean>
+    
+    <bean id = "Teacherinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Teacherinfoserviceimp" scope ="prototype">
+     <property name="cis">
+          <ref bean = "daot"/>
+      </property>
+    </bean>
+    
+     <bean id = "Classinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Classinfoserviceimp" scope ="prototype">
+     <property name="cci">
+          <ref bean = "daoc"/>
+      </property>
+    </bean>
+    
+<bean id = "Cwrrationserviceimp" class = "learn.online.impl.servicemapper.impl.Cwrrationserviceimp" scope ="prototype">
+     <property name="csi">
+          <ref bean = "daor"/>
+      </property>
+    </bean>
+    
+    <bean id = "Leavewordinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Leavewordinfoserviceimp" scope ="prototype">
+     <property name="fli">
+          <ref bean = "daoleaveword"/>
+      </property>
+    </bean>
+    
+     <bean id = "Workinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Workinfoserviceimp" scope ="prototype">
+     <property name="wfi">
+          <ref bean = "daowork"/>
+      </property>
+    </bean>
+    
+    <bean id = "Publicnoticeserviceimp" class = "learn.online.impl.servicemapper.impl.Publicnoticeserviceimp" scope ="prototype">
+     <property name="pti">
+          <ref bean = "daopublic"/>
+      </property>
+    </bean>
+    
+     <bean id = "Replyinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Replyinfoserviceimp" scope ="prototype">
+     <property name="rfi">
+          <ref bean = "daoreply"/>
+      </property>
+    </bean>
+    
+    
+     <bean id = "Upinfoserviceimp" class = "learn.online.impl.servicemapper.impl.Upinfoserviceimp" scope ="prototype">
+     <property name="ufi">
+          <ref bean = "daoupdown"/>
+      </property>
+    </bean>
+    
+    <bean id = "Foruminfoserviceimp" class = "learn.online.impl.servicemapper.impl.Foruminfoserviceimp" scope ="prototype">
+     <property name="ffi">
+          <ref bean = "daoforum"/>
+      </property>
+    </bean>
+    
+    <bean id = "Forumpostserviceimp" class = "learn.online.impl.servicemapper.impl.Forumpostserviceimp" scope ="prototype">
+       <property name="fpi">
+          <ref bean = "daoforumall"/>
+      </property>
+    </bean>
+    
+     <bean id = "Viewserviceimp" class = "learn.online.impl.servicemapper.impl.Viewserviceimp" scope ="prototype">
+       <property name="vvi">
+          <ref bean = "daoview"/>
+      </property>
+    </bean>
+    
+     <bean id = "action.RegisterLoginAction" class = "learn.online.action.RegisterLoginAction" scope ="prototype">
+     <property name="ls">
+          <ref bean = "RegisterLoginServiceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.UpdateRegisterAction" class = "learn.online.action.UpdateRegisterAction" scope ="prototype">
+     <property name="ura">
+          <ref bean = "RegisterLoginServiceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.TeacherInfoAction" class = "learn.online.action.TeacherInfoAction" scope ="prototype">
+     <property name="ans">
+          <ref bean = "Teacherinfoserviceimp"/>
+      </property>
+    </bean>
+    
+     <bean id = "action.ClassInfoAction" class = "learn.online.action.ClassInfoAction" scope ="prototype">
+     <property name="cia">
+          <ref bean = "Classinfoserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.cwrrationAction" class = "learn.online.action.cwrrationAction" scope ="prototype">
+     <property name="cra">
+          <ref bean = "Cwrrationserviceimp"/>
+      </property>
+    </bean>
+    
+     <bean id = "action.LeavewordAction" class = "learn.online.action.LeavewordAction" scope ="prototype">
+     <property name="la">
+          <ref bean = "Leavewordinfoserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.LearninfoAction" class = "learn.online.action.LearninfoAction" scope ="prototype">
+     <property name="lia">
+          <ref bean = "Leavewordinfoserviceimp"/>
+      </property>
+    </bean>
+    
+     <bean id = "action.WorkinfoAction" class = "learn.online.action.WorkinfoAction" scope ="prototype">
+     <property name="wia">
+          <ref bean = "Workinfoserviceimp"/>
+      </property>
+    </bean>
+    
+     <bean id = "action.PublicnoticeAction" class = "learn.online.action.PublicnoticeAction" scope ="prototype">
+     <property name="pta">
+          <ref bean = "Publicnoticeserviceimp"/>
+      </property>
+    </bean>
+   
+   <bean id = "action.ReplyinfoAction" class = "learn.online.action.ReplyinfoAction" scope ="prototype">
+     <property name="ria">
+          <ref bean = "Replyinfoserviceimp"/>
+      </property>
+    </bean>
+    
+    
+    <bean id = "action.UpinfoAction" class = "learn.online.action.UpinfoAction" scope ="prototype">
+     <property name="uia">
+          <ref bean = "Upinfoserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.DownloadAction" class = "learn.online.action.DownloadAction" scope ="prototype">
+    </bean>
+   
+   
+   <bean id = "action.ForumInfoAction" class = "learn.online.action.ForumInfoAction" scope ="prototype">
+     <property name="fia">
+          <ref bean = "Foruminfoserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.ForumrelationAction" class = "learn.online.action.ForumrelationAction" scope ="prototype">
+     <property name="fra">
+          <ref bean = "Forumpostserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.ForumPostAction" class = "learn.online.action.ForumPostAction" scope ="prototype">
+     <property name="fpa">
+          <ref bean = "Forumpostserviceimp"/>
+      </property>
+    </bean>
+    
+    <bean id = "action.ForumreviewAction" class = "learn.online.action.ForumreviewAction" scope ="prototype">
+     <property name="fma">
+          <ref bean = "Forumpostserviceimp"/>
+      </property>
+    </bean>
+    
+      <bean id = "action.StudentAction" class = "learn.online.action.StudentAction" scope ="prototype">
+     <property name="sa">
+          <ref bean = "Viewserviceimp"/>
+      </property>
+    </bean>
+    
+      <bean id = "action.TeacherAction" class = "learn.online.action.TeacherAction" scope ="prototype">
+     <property name="ta">
+          <ref bean = "Viewserviceimp"/>
+      </property>
+    </bean>
+	
+	</beans>

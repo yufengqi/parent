@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/learn.online.action/learn.online.action.iml" filepath="$PROJECT_DIR$/learn.online.action/learn.online.action.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn.online.api/learn.online.api.iml" filepath="$PROJECT_DIR$/learn.online.api/learn.online.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn.online.common/learn.online.common.iml" filepath="$PROJECT_DIR$/learn.online.common/learn.online.common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn.online.impl/learn.online.impl.iml" filepath="$PROJECT_DIR$/learn.online.impl/learn.online.impl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/learn.online.war/learn.online.war.iml" filepath="$PROJECT_DIR$/learn.online.war/learn.online.war.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
+    </modules>
+  </component>
+</project>
+

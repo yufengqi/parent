@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>learn.online</groupId>
+		<artifactId>parent</artifactId>
+		<version>${project.version}</version>
+	</parent>
+	<groupId>learn.online.action</groupId>
+	<artifactId>learn.online.action</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>learn.online.api</groupId>
+			<artifactId>learn.online.api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>learn.online.impl</groupId>
+			<artifactId>learn.online.impl</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>learn.online.common</groupId>
+			<artifactId>learn.online.common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts.xwork</groupId>
+			<artifactId>xwork-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-convention-plugin</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-proxy</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-json-plugin</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-dbcp</artifactId>
+		</dependency>
+	<!-- 	<dependency>
+			<groupId>com.opensymphony</groupId>
+			<artifactId>xwork-core</artifactId>
+		</dependency> -->
+		<dependency>
+			<groupId>org.apache.struts.xwork</groupId>
+			<artifactId>xwork-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+   <package name="forum" extends="struts-default" namespace = ""> 
+      
+      <action name="applyforum">
+             <result>/view/forum/applyforum.jsp</result>
+        </action>
+      
+     <action name="insertforuminfo" class="learn.online.action.ForumInfoAction" method = "insertForum">
+           <result name = "success" type="chain">
+                 <param name="actionName">insertforumrelation</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+   
+    <action name="allforuminfo" class="learn.online.action.ForumInfoAction" method = "getAllForumes">
+             <result name = "success">/view/forum/forummanage.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+    <action name="allpassforuminfo" class="learn.online.action.ForumInfoAction" method = "passAllForumes">
+             <result name = "success">/view/forum/forumapplyed.jsp</result>
+             <result name = "success-studentapply">/view/forum/sforumapply.jsp</result>
+             <result name = "success-forumfirst">/view/forum/forumfirst.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+      <action name="allpassstudentforuminfo" class="learn.online.action.ForumInfoAction" method = "passAllForumes">
+             <result name = "success">include/forumpassall.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>  
+        
+   <action name="selectsigleforuminfo" class="learn.online.action.ForumInfoAction" method = "selectupdateForum">
+             <result name = "success">/view/forum/updateforuminfo.jsp</result>
+             <result name = "success-forumfisrtdetails">/view/forum/forumposttitle.jsp</result>
+              <result name = "success-forumpostall" type="chain">
+                 <param name="actionName">allforumpost</param> 
+              <param name="namespace">/</param> 
+              </result>
+               <result name = "success-insertforumpost">
+                /view/forum/addforumpost.jsp
+              </result>
+               <result name = "success-forumpostpassTeacher" type="redirect">allpassforumpost?manage=0
+              </result>
+               <result name = "success-forumpostpassStudent" type="redirect">allpassforumpost?manage=1
+              </result>
+              <result name = "success-forumfisrtdetailsall" type="redirect">allpassforumpost?manage=2</result>
+            <result name = "fail">/error.jsp</result>
+      </action>  
+      
+       <action name="updateforuminfo" class="learn.online.action.ForumInfoAction" method = "updateForum">
+              <result name = "success">/view/user/personal.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="deleteforuminfo" class="learn.online.action.ForumInfoAction" method = "deleteForum">
+             <result name = "success" type="chain">
+                 <param name="actionName">allforuminfo</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="passforum" class="learn.online.action.ForumInfoAction" method = "passForum">
+             <result name = "success" type="chain">
+                 <param name="actionName">allforuminfo</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="insertforumrelation" class="learn.online.action.ForumrelationAction" method = "insertralation">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="updateforumrelation" class="learn.online.action.ForumrelationAction" method = "updateralation">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="insertforumpost" class="learn.online.action.ForumPostAction" method = "insertforumpost">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="allforumpost" class="learn.online.action.ForumPostAction" method = "getAllforumposts">
+              <result name = "success">/view/forum/forumpostmanage.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+         <action name="selectforumpost" class="learn.online.action.ForumPostAction" method = "selectupdateforumpost">
+             <!--  <result name = "success"></result> -->
+              <result name = "success-reviewall" type="chain">
+                 <param name="actionName">getAllforumreviewes</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="passforumpost" class="learn.online.action.ForumPostAction" method = "passforumpost">
+              <result name = "success" type="chain">
+                 <param name="actionName">allforumpost</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="allpassforumpost" class="learn.online.action.ForumPostAction" method = "passAllforumposts">
+             <result name = "success">/view/forum/forumpostbysend.jsp</result>
+             <result name = "success-allpost">/view/forum/forumfisrtdetails.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="deleteforumpost" class="learn.online.action.ForumPostAction" method = "deleteforumpost">
+              <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>  
+        
+        
+        <action name="insertforumreview" class="learn.online.action.ForumreviewAction" method = "insertforumreview">
+             <result name = "success" type="chain">
+                 <param name="actionName">getAllforumreviewes</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <action name="getAllforumreviewes" class="learn.online.action.ForumreviewAction" method = "getAllforumreviewes">
+             <result name = "success">/view/forum/forumpostreview.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> 
+        
+        <!--  <action name="deleteforumreview" class="learn.online.action.ForumreviewAction" method = "deleteforumreview">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action> -->
+   
+   </package>
+</struts>

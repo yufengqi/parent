@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+      <constant name="struts.objectFactory" value="spring" />
+      <include file="forum.xml"></include>
+   <package name="LearnOnline" extends="struts-default" namespace = "/"> 
+  
+     <!-- <action name="teacher" class="action.StudentAction" method = "getAllclasses">
+           <result name = "success" type="chain">
+                 <param name="actionName">teacher</param> 
+              <param name="namespace">/</param> 
+              </result>
+        </action> -->
+   
+     <action name="index" class="action.TeacherAction" method = "getAllclasses">
+            <result name = "success">/index.jsp</result>
+        </action>
+     
+        <action name="Customerlogin" class="action.RegisterLoginAction" method = "login">
+           <result name="input">index.jsp</result>
+              <result name = "success">/view/user/personal.jsp <!-- type="chain"> -->
+             <!--     <param name="actionName">index</param> 
+              <param name="namespace">/</param>  -->
+              </result>
+           
+        </action>
+        <action name="Customerregister" class="action.RegisterLoginAction" method = "register">
+            <result name = "resuccess">/success.jsp</result>
+            <result name = "refail">/view/user/register.jsp</result>
+            <result name="input">/view/user/register.jsp</result>
+        </action>
+        
+         <action name="getAll" class="action.UpdateRegisterAction" method = "AGexecute">
+          <result name = "fail">/error.jsp</result>
+           <result name = "success">/view/user/registermanage.jsp</result>
+        </action>
+        
+          <action name="delete" class="action.UpdateRegisterAction" method = "delete">
+            <result name = "success" type="chain">
+                 <param name="actionName">getAll</param> 
+              <param name="namespace">/</param> 
+              </result>
+           <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="update" class="action.UpdateRegisterAction" method = "update">
+          <result name = "fail">/error.jsp</result>
+           <result name = "success">/view/user/personal.jsp</result>
+        </action>
+        
+        <action name="selectupdate" class="action.UpdateRegisterAction" method = "selectupdate">
+            <result name = "success">/view/user/updateRegister.jsp</result>
+        </action> 
+        
+        <action name="addinformation">
+            <result >/view/user/imformation.jsp</result>
+        </action>
+        
+         <action name="insertclassinfo" class="action.ClassInfoAction" method = "insertclass">
+            <result name = "success" type="chain">
+              <param name="actionName">insertralation</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+         <action name="deleteclass" class="action.ClassInfoAction" method = "deleteclass">
+            <result name = "success" type="chain">
+              <param name="actionName">classmanage</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+
+        <action name="insertinformation" class="action.TeacherInfoAction" method = "insertnew">
+            <result name = "success">/view/user/personal.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="allinformation" class="action.TeacherInfoAction" method = "getAllNews">
+            <result name = "success">/view/forclasses/showtinformationlist.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectintroduceinformation" class="action.TeacherInfoAction" method = "selectupdatenewbyJid">
+            <result name = "success">/view/forclasses/showintroduceimformation.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectinformation" class="action.TeacherInfoAction" method = "selectupdatenew">
+            <result name = "success">/view/forclasses/showtimformation.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="updateinformation" class="action.TeacherInfoAction" method = "updatenew">
+              <result name = "success" type="chain">
+              <param name="actionName">allinformation</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="deleteimformation" class="action.TeacherInfoAction" method = "deletenew">
+            <result name = "success" type="chain">
+              <param name="actionName">allinformation</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="insertralation" class="action.cwrrationAction" method = "insertralation">
+            <result name = "success">/success.jsp</result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+        <action name="updateralation" class="action.cwrrationAction" method = "updateralation">
+            <result name = "success">/success.jsp</result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+         <action name="deleteralation" class="action.cwrrationAction" method = "deleteralation">
+              <result name = "success" type="chain">
+              <param name="actionName">allchooseclasses</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+        <action name="deleteallralation" class="action.cwrrationAction" method = "deleteralation">
+              <result name = "success" type="chain">
+              <param name="actionName">allapplyclasses</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/index.jsp</result>
+        </action>
+        
+         <action name="classralationupdate" class="action.cwrrationAction" method = "selectupdateralation">
+             <result name = "success" type="chain">
+              <param name="actionName">updateralation</param> 
+              <param name="namespace">/</param> 
+              </result>
+             <!--  result name = "success">/sapplyclassqr.jsp</result>-->
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="classmanage" class="action.ClassInfoAction" method = "getAllclasses">
+            <result name = "success">/view/forclasses/classmanage.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="allclasses" class="action.ClassInfoAction" method = "passAllclasses">
+            <result name = "success">/view/forclasses/introduce.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="allchooseclasses" class="action.ClassInfoAction" method = "allchooseclasses">
+            <result name = "success">/view/forclasses/chooseclasses.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="learnchooseclasses" class="action.ClassInfoAction" method = "allchooseclasses">
+            <result name = "success">/view/user/personal.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="allapplyclasses" class="action.ClassInfoAction" method = "allapplyclasses">
+            <result name = "success">/view/forclasses/teacherapplyclass.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        
+        <action name="learnonlinesingle" class="action.ClassInfoAction" method = "selectupdateclass">
+            <result name = "success">/view/learnonline/learnonline.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="selectintroduceclass" class="action.ClassInfoAction" method = "selectupdateclass">
+            <result name = "success">/view/forclasses/sapplyclass.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        
+        <action name="selectglyupdateclass" class="action.ClassInfoAction" method = "selectupdateclass">
+            <result name = "success">/view/forclasses/updateclass.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="glyupdateclass" class="action.ClassInfoAction" method = "updateclass">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        
+        
+        <action name="passclass" class="action.ClassInfoAction" method = "passclass">
+            <result name = "success" type="chain">
+              <param name="actionName">classmanage</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="allworks" class="action.WorkinfoAction" method = "getAllworkes">
+            <result name = "success">/view/work/workinfo.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectworkinfo" class="action.WorkinfoAction" method = "selectupdatework">
+            <result name = "success">/view/work/workinfodetails.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectupdateworkinfo" class="action.WorkinfoAction" method = "selectupdatework">
+            <result name = "success">/view/work/workinfoupdate.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="insertworkinfo" class="action.WorkinfoAction" method = "insertwork">
+            <result name = "success" type="chain">
+              <param name="actionName">updateralation</param> 
+              <param name="namespace">/</param> 
+              </result> 
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="updateworkinfo" class="action.WorkinfoAction" method = "updatework">
+            <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="deleteupdateralation" class="action.cwrrationAction" method = "updateralation">
+            <result name = "success" type="chain">
+              <param name="actionName">deleteworkinfo</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        
+         <action name="deleteworkinfo" class="action.WorkinfoAction" method = "deletework">
+             <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+       
+        
+         <action name="publicnoticemanage" class="action.PublicnoticeAction" method = "getAllpublicnoticees">
+            <result name = "success">/view/publicnotice/publicmanage.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="allpublicnotice" class="action.PublicnoticeAction" method = "getAllpasspublicnoticees">
+            <result name = "success">/indexfirst.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="publicnotice" class="action.PublicnoticeAction" method = "allapplypublicnoticees">
+            <result name = "success">/view/publicnotice/publicnoticeinfo.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectpulicnotice" class="action.PublicnoticeAction" method = "selectupdatepublicnotice">
+            <result name = "success">/view/publicnotice/publicnoticedetails.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectupdatepulicnotice" class="action.PublicnoticeAction" method = "selectupdatepublicnotice">
+            <result name = "success">/view/publicnotice/publicnoticeupdate.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="insertpublicnotice" class="action.PublicnoticeAction" method = "insertpublicnotice">
+            <result name = "success" type="chain">
+              <param name="actionName">publicnotice</param> 
+              <param name="namespace">/</param> 
+              </result> 
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="updatepublicnotice" class="action.PublicnoticeAction" method = "updatepublicnotice">
+            <result name = "success">/success.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="deletepulicnotice" class="action.PublicnoticeAction" method = "deletepublicnotice">
+            <result name = "success" type="chain">
+              <param name="actionName">publicnotice</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="deletepulicnoticeM" class="action.PublicnoticeAction" method = "deletepublicnotice">
+            <result name = "success" type="chain">
+              <param name="actionName">publicnoticemanage</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="passpublicnotice" class="action.PublicnoticeAction" method = "passpublicnotice">
+            <result name = "success" type="chain">
+              <param name="actionName">publicnoticemanage</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+          <action name="Allcontent" class="action.LeavewordAction" method = "getAllleavewordes">
+            <result name = "success" type="chain">
+              <param name="actionName">selectallreplyinfo</param> 
+              <param name="namespace">/</param> 
+              </result>
+             <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="Allcontenthd" class="action.LearninfoAction" method = "getAlllearninfo">
+            <result name = "success">/view/learnonline/learnonlinehd.jsp</result>
+            
+            <!-- <result name = "success" type="chain">
+                <param name="actionName">learnonlinesingle</param> 
+              <param name="namespace">/</param>
+             </result> -->
+             <result name = "fail">/error.jsp</result>
+        </action>
+        
+      <!--     <action name="Allcontentnow" class="action.LeavewordAction" method = "getAllleavewordes">
+            <result name = "success">/view/learnonline/learnonlinehd.jsp</result>
+             <result name = "fail">/error.jsp</result>
+        </action>-->
+        
+        <action name="addcontentnow" class="action.LearninfoAction" method = "insertlearninfo">
+             <result name = "success" type="chain">
+              <param name="actionName">Allcontenthd</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="addcontent" class="action.LeavewordAction" method = "insertleaveword">
+             <result name = "success" type="chain">
+              <param name="actionName">Allcontent</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectonlycontent" class="action.LeavewordAction" method = "selectupdateleaveword">
+           <result name = "success">/view/leaveword/addreviewleaveword.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+         <action name="deletecontent" class="action.LeavewordAction" method = "deleteleaveword">
+            <result name = "success" type="chain">
+              <param name="actionName">Allcontent</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="addreplyinfo" class="action.ReplyinfoAction" method = "insertreplyinfo">
+             <result name = "success" type="chain">
+              <param name="actionName">Allcontent</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+          <action name="selectallreplyinfo" class="action.ReplyinfoAction" method = "passAllreplyinfoes">
+             <result name = "success">/view/leaveword/leaveword.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectdeletereplyinfo" class="action.LeavewordAction" method = "selectupdateleaveword">
+             <result name = "success" type="chain">
+              <param name="actionName">deletecontent</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="loaddown" class="action.UpinfoAction" method = "getAllupinfoes">
+            <result name = "success">/view/download/download.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="loaddownall" class="action.UpinfoAction" method = "passAllupinfoes">
+            <result name = "success">/view/download/download.jsp</result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="upload" class="action.LeavewordAction" method = "selectupdateleaveword">
+             <result name = "success" type="chain">
+              <param name="actionName">selectclass</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+        
+        <action name="selectclass" class="action.ClassInfoAction" method = "selectupdateclass">
+            <result name = "success" type="chain">
+              <param name="actionName">uploadnow</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+		
+		<action name="uploadnow" class="action.UpinfoAction" method = "executem">
+			<result name="input">/view/download/upload.jsp</result>
+<!--			<result name="success">/upload_success.jsp</result>-->
+			<result name = "success">/success.jsp</result>
+			<interceptor-ref name="fileUpload">
+<!--大家可以设置成自己的配置，想文件类型和大小等限制			-->
+<!--				<param name="maximumSize">2097152</param>单位是字节	2M	（2097152B）		-->
+<!--				<param name="allowedTypes">image/bmp,image/x-png,image/png,image/gif,image/jpeg,image/jpg,image/pjpeg</param>-->
+<!--				-->
+<!--					容许文件类型为doc,ppt,xls,pdf,txt,java-->
+<!--				-->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+
+		<action name="download" class="action.DownloadAction">
+			<result name="success" type="stream">
+				<param name="contentDisposition">attachment;filename="${fileName}"</param>
+				<param name="inputName">downloadFile</param>
+			</result>
+	</action>
+		
+		<action name="deleteupinfo" class="action.UpinfoAction" method = "deleteupinfo">
+           <result name = "success" type="chain">
+              <param name="actionName">loaddownall</param> 
+              <param name="namespace">/</param> 
+              </result>
+            <result name = "fail">/error.jsp</result>
+        </action>
+		
+     </package>
+</struts>    
